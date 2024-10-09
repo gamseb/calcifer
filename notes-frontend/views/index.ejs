@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Notes</h1>
+        <a href="/create" class="mdc-button mdc-button--raised">Create a New Note</a>
+
+        <ul class="note-list">
+            <% notes.forEach(note => { %>
+                <li>
+                    <h3><%= note.title %></h3>
+                    <p><%= note.content %></p>
+                    <a href="/edit/<%= note.id %>" class="mdc-button">Edit</a>
+                    <form action="/delete/<%= note.id %>" method="POST" style="display:inline;">
+                        <button class="mdc-button mdc-button--raised">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
